@@ -1,0 +1,125 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="yt-home">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+      #search {
+        background: #FDDD00;
+        height: 100vh;
+        text-align: center;
+        overflow: hidden;
+        position: relative;
+      }
+      #subsection {
+        background: #111111;
+      }
+      .disk {
+        position: absolute;
+        width: 100%;
+        bottom:-52vh;
+      }
+      .disk > object {
+        width: 55%;
+      }
+      .logo {
+        width: 150px;
+      }
+      form #searchInput {
+        width: 450px;
+        height: 35px;
+        display: block;
+        margin: 0 auto;
+        margin-top: 15px;
+        padding: 0 15px;
+        border-radius: 2em;
+      }
+      .convert {
+        padding: 10px 30px;
+        border-radius: 2em;
+        border: 2px solid #111111;
+        background: #FDDD00;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin-top: 15px;
+      }
+      .convert > span {
+        background: #111;
+        display: inline-block;
+        margin: -10px -30px -10px 15px;
+        padding: 10px 55px;
+        border-radius: 0 2em 2em 0;
+        color: #fddd00;
+      }
+      h2 {
+        margin: 0;
+      }
+      #subsection h2 {
+        color:#FDDD00;
+      }
+      .container {
+        width: 1170px;
+        margin:0 15px;
+      }
+      ul#most-watch {
+        padding: 0;
+        margin: 0;
+      }
+      ul#most-watch li {
+        clear:both;
+      }
+      ul#most-watch li a img {
+        width: 240px;
+        background: gray;
+        display: inline-block;
+        height: 160px;
+        float: left;
+        margin-right: 15px;
+        margin-bottom: 15px;
+      }
+    </style>
+
+
+    <section id="search">
+      <div class="logo-holder">
+        <a href="/"><img src="./images/yt-factory-logo.svg" class="logo"></a>
+      </div>
+      <div class="search">
+        <form>
+          <input id="searchInput" type="text" name="s" placeholder="Paste the URL here" />
+          <button class="convert">Convert To <span>MP3</span></button>
+        </form>
+      </div>
+      <div class="disk">
+        <object data="./images/disk.svg" type="image/svg+xml">
+          <img src="./images/disk.svg" />
+        </object>
+      </div>
+    </section>
+    <section id="subsection">
+      <div class="container">
+        <div class="most-watch">
+          <h2>Most Watch Today</h2>
+          <ul id="most-watch">
+            <li>
+              <a href=""><img src=""></a>
+              <h3>Title</h3>
+              <a href="">Convert To <span>MP3</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </template>
+
+  <script>
+    class YTHome extends Polymer.Element {
+      static get is() { return 'yt-home'; }
+    }
+
+    window.customElements.define(YTHome.is, YTHome);
+  </script>
+</dom-module>
