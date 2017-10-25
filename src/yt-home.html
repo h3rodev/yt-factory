@@ -27,16 +27,16 @@
       }
       .logo {
         margin: 15px 0 0;
-        width: 150px;
+        width: 250px;
       }
       form #searchInput {
-        width: 450px;
-        height: 35px;
+        width: 60%;
+        height: 45px;
         display: block;
         margin: 0 auto;
         margin-top: 15px;
         padding: 0 15px;
-        border-radius: 2em;
+        border-radius: 3em;
       }
       .convert {
         padding: 10px 30px;
@@ -46,6 +46,9 @@
         text-transform: uppercase;
         font-weight: bold;
         margin-top: 15px;
+        display: inline-block;
+        text-decoration: none;
+        color: #111;
       }
       .convert > span {
         background: #111;
@@ -81,6 +84,20 @@
         margin-right: 15px;
         margin-bottom: 15px;
       }
+      .needle-holder {
+        z-index: 1;
+      }
+      #needle-icon {
+        width: 25%;
+        position: absolute;
+        right: -13%;
+        transform: rotate3d(0, 0, 1, 65deg);
+        transform-origin: top calc(right );
+        transition: 1s
+      }
+      #needle-icon.active {
+        transform: rotate3d(0, 0, 1, 45deg);
+      }
     </style>
 
 
@@ -91,11 +108,14 @@
       <div class="search">
         <form>
           <input id="searchInput" type="text" name="s" placeholder="Paste the URL here" />
-          <button class="convert">Convert To <span>MP3</span></button>
+          <a href="#" class="convert" on-click="convertMe">Convert To <span>MP3</span></a>
         </form>
       </div>
       <div class="disk">
-        <object data="./images/disk.svg" type="image/svg+xml">
+        <object id="needle-icon" class="" data="./images/needle-icon.svg" type="image/svg+xml">
+          <img src="./images/needle-icon.svg" />
+        </object>
+        <object id="disk" data="./images/disk.svg" type="image/svg+xml">
           <img src="./images/disk.svg" />
         </object>
       </div>
@@ -104,7 +124,19 @@
 
   <script>
     class YTHome extends Polymer.Element {
+
       static get is() { return 'yt-home'; }
+
+      convertMe() {
+        var needleIcon = this.shadowRoot.querySelector('#needle-icon').classList;
+        console.log(needleIcon);
+
+        if (needleIcon.contains("active")) {
+          needleIcon.remove("active");
+        } else {
+          needleIcon.add("active");
+        }
+      }
     }
 
     window.customElements.define(YTHome.is, YTHome);

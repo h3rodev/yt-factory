@@ -23,6 +23,7 @@
       :host {
         --app-primary-color: #000;
         --app-secondary-color: #FDDD00;
+        --app--transparent-primary-color:rgba(0,0,0,0);
         --app-drawer-width: 30%;
         display: block;
       }
@@ -32,8 +33,8 @@
       }
 
       app-header {
-        color: #fff;
-        background-color: var(--app-primary-color);
+        color: var(--app-primary-color);
+        background-color: var(--app-secondary-color);
       }
 
       app-header paper-icon-button {
@@ -112,6 +113,7 @@
         margin-bottom: 15px;
         border:1px solid #666;
         position: relative;
+        border-radius: 50%;
       }
       .similar-songs li .thumb-img {
         height: 100%;
@@ -123,15 +125,42 @@
         top: 25%;
         left: 25%;
       }
-      .similar-songs li h3, .similar-songs li h5 {
+
+      .similar-songs li h5 {
         color:#666;
         line-height: normal;
         margin: 0;
         padding: 0;
+        font-size: 0.83em;
       }
       .clearfix { 
         clear: both;
         display: block;
+      }
+      .convert {
+        padding: 5px 15px;
+        border-radius: 2em;
+        background: #FDDD00;
+        text-transform: uppercase;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        color: #111;
+        float: right;
+        font-size: 12px;
+      }
+      .convert > span {
+        background: #111;
+        display: inline-block;
+        margin: -5px -16px -5px 5px;
+        padding: 5px 15px;
+        border-radius: 0 2em 2em 0;
+        color: #fddd00;
+      }
+      .info-section {
+        float: left;
+        margin-right: 15px;
+        margin-bottom: 15px;
       }
     </style>
 
@@ -165,42 +194,71 @@
                   <img src="./images/yt-factory.jpg" class="thumb-img">
                   <img src="./images/play-icon.svg" class="play-icon">
                 </div>
-                <h3>Song Title</h3>
-                <h5>Artist Name</h5>
-
+                <div class="info-section">
+                  <h5>Song Title</h5>
+                  <h5>Artist Name</h5>
+                </div>
+                <a href="#" class="convert">Convert To <span>MP3</span></a>
                 <span class="clearfix"></span>
               </li>
-
               <li>
                 <div class="thumb-holder">
                   <img src="./images/yt-factory.jpg" class="thumb-img">
                   <img src="./images/play-icon.svg" class="play-icon">
                 </div>
-                <h3>Song Title</h3>
-                <h5>Artist Name</h5>
-
+                <div class="info-section">
+                  <h5>Song Title</h5>
+                  <h5>Artist Name</h5>
+                </div>
+                <a href="#" class="convert">Convert To <span>MP3</span></a>
                 <span class="clearfix"></span>
               </li>
-
               <li>
                 <div class="thumb-holder">
                   <img src="./images/yt-factory.jpg" class="thumb-img">
                   <img src="./images/play-icon.svg" class="play-icon">
                 </div>
-                <h3>Song Title</h3>
-                <h5>Artist Name</h5>
-
+                <div class="info-section">
+                  <h5>Song Title</h5>
+                  <h5>Artist Name</h5>
+                </div>
+                <a href="#" class="convert">Convert To <span>MP3</span></a>
                 <span class="clearfix"></span>
               </li>
-
               <li>
                 <div class="thumb-holder">
                   <img src="./images/yt-factory.jpg" class="thumb-img">
                   <img src="./images/play-icon.svg" class="play-icon">
                 </div>
-                <h3>Song Title</h3>
-                <h5>Artist Name</h5>
-
+                <div class="info-section">
+                  <h5>Song Title</h5>
+                  <h5>Artist Name</h5>
+                </div>
+                <a href="#" class="convert">Convert To <span>MP3</span></a>
+                <span class="clearfix"></span>
+              </li>
+              <li>
+                <div class="thumb-holder">
+                  <img src="./images/yt-factory.jpg" class="thumb-img">
+                  <img src="./images/play-icon.svg" class="play-icon">
+                </div>
+                <div class="info-section">
+                  <h5>Song Title</h5>
+                  <h5>Artist Name</h5>
+                </div>
+                <a href="#" class="convert">Convert To <span>MP3</span></a>
+                <span class="clearfix"></span>
+              </li>
+              <li>
+                <div class="thumb-holder">
+                  <img src="./images/yt-factory.jpg" class="thumb-img">
+                  <img src="./images/play-icon.svg" class="play-icon">
+                </div>
+                <div class="info-section">
+                  <h5>Song Title</h5>
+                  <h5>Artist Name</h5>
+                </div>
+                <a href="#" class="convert">Convert To <span>MP3</span></a>
                 <span class="clearfix"></span>
               </li>
               
