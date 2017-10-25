@@ -14,16 +14,16 @@
 
 <link rel="lazy-import" href="yt-home.html">
 <link rel="lazy-import" href="yt-about.html">
-<link rel="lazy-import" href="my-view3.html">
-<link rel="lazy-import" href="yt-view404.html">
+<link rel="lazy-import" href="yt-contact.html">
+<link rel="lazy-import" href="yt-404.html">
 
 <dom-module id="yt-factory">
   <template>
     <style>
       :host {
-        --app-primary-color: #4285f4;
-        --app-secondary-color: black;
-
+        --app-primary-color: #000;
+        --app-secondary-color: #FDDD00;
+        --app-drawer-width: 30%;
         display: block;
       }
 
@@ -56,43 +56,181 @@
         color: black;
         font-weight: bold;
       }
+      .yt-drawer {
+        background:#000;
+        height: 100%;
+      }
+      .yt-banner {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        text-align: center;        
+      }
+      .yt-banner .banner-image {
+        position: relative;
+        width: 100%;
+        filter: grayscale(1);
+        opacity: 0.5;
+      }
+      .yt-banner .note-icon {
+        position: absolute;
+        width: 25%;
+        display: block;
+        top: 25%;
+        margin: 0 37.5%;
+      }
+      .yt-banner h3 {
+        position: absolute;
+        bottom: 25%;
+        color: #fff;
+        text-transform: uppercase;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      .results {
+        margin: 15px;
+      }
+      .similar-songs {
+        padding: 0;
+        margin: 0;
+      }
+      .similar-songs li {
+        border-bottom: 1px solid #666;
+        clear: both;
+        margin-top: 15px;
+      }
+      .similar-songs li:last-child {
+        border-bottom: unset;
+      }
+      .similar-songs li .thumb-holder {
+        width: 32px;
+        height: 32px;
+        overflow: hidden;
+        float: left;
+        margin-right: 15px;
+        margin-bottom: 15px;
+        border:1px solid #666;
+        position: relative;
+      }
+      .similar-songs li .thumb-img {
+        height: 100%;
+        width: auto;
+      }
+      .similar-songs li .play-icon {
+        width: 50%;
+        position: absolute;
+        top: 25%;
+        left: 25%;
+      }
+      .similar-songs li h3, .similar-songs li h5 {
+        color:#666;
+        line-height: normal;
+        margin: 0;
+        padding: 0;
+      }
+      .clearfix { 
+        clear: both;
+        display: block;
+      }
     </style>
 
-  <app-location
-      route="{{route}}"
-      url-space-regex="^[[rootPath]]">
-  </app-location>
+    <app-location
+        route="{{route}}"
+        url-space-regex="^[[rootPath]]">
+    </app-location>
 
-  <app-route
-      route="{{route}}"
-      pattern="[[rootPath]]:page"
-      data="{{routeData}}"
-      tail="{{subroute}}">
-  </app-route>
+    <app-route
+        route="{{route}}"
+        pattern="[[rootPath]]:page"
+        data="{{routeData}}"
+        tail="{{subroute}}">
+    </app-route>
 
-  <header>
-    <div class="container">
+    <app-drawer-layout fullbleed narrow="{{narrow}}">
+      <!-- Drawer content -->
+      
+      <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
+        <div class="yt-drawer">
+          <div class="yt-banner">
+            <img src="./images/yt-fatory_bnw.jpg" class="banner-image">
+            <h3>Top 100 Hits Song</h3>
+            <img src="./images/note-icon.svg" class="note-icon">
+          </div>
 
-    </div>
-  </header>
+          <div class="results">
+            <ul class="similar-songs">
+              <li>
+                <div class="thumb-holder">
+                  <img src="./images/yt-factory.jpg" class="thumb-img">
+                  <img src="./images/play-icon.svg" class="play-icon">
+                </div>
+                <h3>Song Title</h3>
+                <h5>Artist Name</h5>
 
-  <iron-pages
-      selected="[[page]]"
-      attr-for-selected="name"
-      fallback-selection="view404"
-      role="main">
-    <yt-home name="home"></yt-home>
-    <yt-about name="about"></yt-about>
-    <yt-contact name="contact"></my-view3>
-    <yt-view404 name="view404"></yt-view404>
-  </iron-pages>
+                <span class="clearfix"></span>
+              </li>
 
-  <footer>
-    <div class="container">
+              <li>
+                <div class="thumb-holder">
+                  <img src="./images/yt-factory.jpg" class="thumb-img">
+                  <img src="./images/play-icon.svg" class="play-icon">
+                </div>
+                <h3>Song Title</h3>
+                <h5>Artist Name</h5>
 
-    </div>
-  </footer>
+                <span class="clearfix"></span>
+              </li>
 
+              <li>
+                <div class="thumb-holder">
+                  <img src="./images/yt-factory.jpg" class="thumb-img">
+                  <img src="./images/play-icon.svg" class="play-icon">
+                </div>
+                <h3>Song Title</h3>
+                <h5>Artist Name</h5>
+
+                <span class="clearfix"></span>
+              </li>
+
+              <li>
+                <div class="thumb-holder">
+                  <img src="./images/yt-factory.jpg" class="thumb-img">
+                  <img src="./images/play-icon.svg" class="play-icon">
+                </div>
+                <h3>Song Title</h3>
+                <h5>Artist Name</h5>
+
+                <span class="clearfix"></span>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </app-drawer>
+      
+      <!-- Main content -->
+      <app-header-layout has-scrolling-region>
+
+        <app-header slot="header" condenses reveals effects="waterfall">
+          <app-toolbar>
+            <paper-icon-button icon="yt-icons:menu" drawer-toggle></paper-icon-button>
+            <div>YT Factory</div>
+          </app-toolbar>
+        </app-header>
+
+        <iron-pages
+            selected="[[page]]"
+            attr-for-selected="name"
+            fallback-selection="404"
+            role="main">
+          <yt-home name="home"></yt-home>
+          <yt-about name="about"></yt-about>
+          <yt-contact name="contact"></yt-contact>
+          <yt-404 name="404"></yt-404>
+        </iron-pages>
+      </app-header-layout>
+    </app-drawer-layout>
   </template>
 
   <script>
@@ -136,7 +274,7 @@
       }
 
       _showPage404() {
-        this.page = 'view404';
+        this.page = '404';
       }
     }
 
